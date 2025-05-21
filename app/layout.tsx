@@ -1,35 +1,63 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Header from "@/components/header";
-import Nav from "@/components/nav";
-import ActiveSectionContextProvider from "@/context/active-section-context";
-import Progress from "@/components/progress";
+import type { Metadata, Viewport } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+import './globals.css'
+import { Header } from './header'
+import { Footer } from './footer'
+import { ThemeProvider } from 'next-themes'
 
-const inter = Inter({ subsets: ["latin"] });
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#ffffff',
+}
 
 export const metadata: Metadata = {
-  title: "Mariana Morais",
-  description: "Mariana is a developer focused on Front-End development.",
+  metadataBase: new URL('https://nim-fawn.vercel.app/'),
+  alternates: {
+    canonical: '/'
+  },
+  title: {
+    default: 'Nim - Personal website template',
+    template: '%s | Nim'
+  },
+  description:  'Nim is a free and open-source personal website template built with Next.js 15, React 19 and Motion-Primitives.',
 };
+
+const geist = Geist({
+  variable: '--font-geist',
+  subsets: ['latin'],
+})
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+})
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} text-white relative flex flex-col  mx-auto max-w-[360px] md:max-w-lg lg:max-w-[1250px] my-10 lg:flex`}
+        className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
       >
-        <Header />
-        <ActiveSectionContextProvider>
-          <Nav />
-          {children}
-        </ActiveSectionContextProvider>
-        <Progress />
+        <ThemeProvider
+          enableSystem={true}
+          attribute="class"
+          storageKey="theme"
+          defaultTheme="system"
+        >
+          <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-inter-tight)]">
+            <div className="relative mx-auto w-full max-w-screen-lg flex-1 px-4 pt-20">
+              <Header />
+              {children}
+              <Footer />
+            </div>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
