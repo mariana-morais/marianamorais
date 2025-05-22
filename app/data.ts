@@ -181,17 +181,17 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
-    company: 'Data Core',
-    title: 'Associate Systems Analyst',
-    start: '2019',
-    end: '2020',
+    company: 'Winx',
+    title: 'Front-End Developer',
+    start: '2024',
+    end: 'Present',
     id: 'work1',
   },
   {
-    company: 'Huia Haus',
-    title: 'Full Stack Developer',
-    start: '2021',
-    end: '2022',
+    company: 'Weni',
+    title: 'Front-End Developer',
+    start: '2023',
+    end: '2024',
     id: 'work2',
   },
   {
@@ -202,17 +202,17 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     id: 'work3',
   },
   {
-    company: 'Weni',
-    title: 'Front-End Developer',
-    start: '2023',
-    end: '2024',
+    company: 'Huia Haus',
+    title: 'Full Stack Developer',
+    start: '2021',
+    end: '2022',
     id: 'work4',
   },
   {
-    company: 'Winx',
-    title: 'Front-End Developer',
-    start: '2024',
-    end: 'Present',
+    company: 'Data Core',
+    title: 'Associate Systems Analyst',
+    start: '2019',
+    end: '2020',
     id: 'work5',
   },
 ]
